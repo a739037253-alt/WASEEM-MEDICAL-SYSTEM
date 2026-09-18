@@ -28,7 +28,6 @@ dependencyResolutionManagement {
     repositories {
         google()
         mavenCentral()
-
         maven {
             url = uri("https://storage.googleapis.com/download.flutter.io")
         }
@@ -38,3 +37,4 @@ dependencyResolutionManagement {
 rootProject.name = "waseem_medical_pro"
 
 include ":app"
+
