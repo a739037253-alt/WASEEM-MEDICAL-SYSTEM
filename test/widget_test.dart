@@ -1,5 +1,5 @@
 import 'package:flutter_test/flutter_test.dart';
-import 'package:waseem_medical_pro/main.dart';
+import 'package:waseem_medical_pro/app.dart';
 
 void main() {
   testWidgets('Waseem Medical starts', (tester) async {

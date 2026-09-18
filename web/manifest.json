@@ -1,0 +1,11 @@
+{
+  "name": "نظام وسيم الطبي PRO",
+  "short_name": "وسيم ميديكال",
+  "start_url": ".",
+  "display": "standalone",
+  "background_color": "#F4F8FB",
+  "theme_color": "#0B7891",
+  "description": "نظام طبي وإداري ومحاسبي متكامل",
+  "lang": "ar",
+  "dir": "rtl"
+}

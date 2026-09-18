@@ -1,3 +1,4 @@
+import 'package:flutter/foundation.dart';
 import 'package:path/path.dart';
 import 'package:sqflite/sqflite.dart';
 
@@ -10,7 +11,9 @@ class DatabaseService {
 
   Future<void> initialize() async {
     if (_db != null) return;
-    final path = join(await getDatabasesPath(), 'waseem_medical_pro.db');
+    final path = kIsWeb
+        ? 'waseem_medical_pro_web.db'
+        : join(await getDatabasesPath(), 'waseem_medical_pro.db');
     _db = await openDatabase(path, version: 1, onCreate: _onCreate);
   }
 
