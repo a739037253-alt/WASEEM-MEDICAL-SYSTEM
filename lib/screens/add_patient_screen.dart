@@ -20,6 +20,8 @@ class _AddPatientScreenState extends State<AddPatientScreen> {
   final address = TextEditingController();
   final nationalId = TextEditingController();
   final notes = TextEditingController();
+  final serviceController = TextEditingController();
+  final doctorController = TextEditingController();
   String gender = 'ذكر';
   String department = 'العلاج الطبيعي';
   String service = '';
@@ -31,7 +33,10 @@ class _AddPatientScreenState extends State<AddPatientScreen> {
   @override
   void dispose() {
     name.dispose(); phone.dispose(); age.dispose(); birth.dispose(); address.dispose();
-    nationalId.dispose(); notes.dispose();
+    nationalId.dispose();
+    notes.dispose();
+    serviceController.dispose();
+    doctorController.dispose();
     super.dispose();
   }
 
@@ -56,8 +61,8 @@ class _AddPatientScreenState extends State<AddPatientScreen> {
         'address': address.text.trim(),
         'national_id': nationalId.text.trim(),
         'department': department,
-        'service': service.trim(),
-        'doctor': doctor.trim(),
+        'service': serviceController.text.trim(),
+        'doctor': doctorController.text.trim(),
         'referral_source': referral,
         'notes': notes.text.trim(),
         'created_at': registrationDate.toIso8601String(),
@@ -72,7 +77,7 @@ class _AddPatientScreenState extends State<AddPatientScreen> {
           patient: name.text.trim(),
           fileNo: fileNo,
           center: 'المركز الأول للعلاج الطبيعي والتأهيل - دمت',
-          service: service.isEmpty ? department : service,
+          service: serviceController.text.trim().isEmpty ? department : serviceController.text.trim(),
           date: DateFormat('yyyy/MM/dd').format(registrationDate),
           support: '774486588',
         );
@@ -153,9 +158,9 @@ class _AddPatientScreenState extends State<AddPatientScreen> {
                   DropdownMenuItem(value: 'عيادة المخ والأعصاب', child: Text('عيادة المخ والأعصاب')),
                 ], onChanged: (v) => setState(() => department = v!)),
                 const SizedBox(height: 10),
-                TextFormField(controller: TextEditingController(text: service), onChanged: (v) => service = v, decoration: const InputDecoration(labelText: 'الخدمة')),
+                TextFormField(controller: serviceController, decoration: const InputDecoration(labelText: 'الخدمة (اختياري)')),
                 const SizedBox(height: 10),
-                TextFormField(controller: TextEditingController(text: doctor), onChanged: (v) => doctor = v, decoration: const InputDecoration(labelText: 'الطبيب / الأخصائي')),
+                TextFormField(controller: doctorController, decoration: const InputDecoration(labelText: 'الطبيب / الأخصائي (اختياري)')),
                 const SizedBox(height: 10),
                 DropdownButtonFormField<String>(value: referral, decoration: const InputDecoration(labelText: 'مصدر المعرفة بالمركز'), items: const [
                   DropdownMenuItem(value: 'معرفة شخصية', child: Text('معرفة شخصية')),
