@@ -5,6 +5,45 @@ plugins {
 }
 
 android {
+    namespace = "com.waseem.medical"
+    compileSdk = flutter.compileSdkVersion
+
+    ndkVersion = flutter.ndkVersion
+
+    defaultConfig {
+        applicationId = "com.waseem.medical"
+        minSdk = flutter.minSdkVersion
+        targetSdk = flutter.targetSdkVersion
+        versionCode = flutter.versionCode
+        versionName = flutter.versionName
+    }
+
+    compileOptions {
+        sourceCompatibility = JavaVersion.VERSION_17
+        targetCompatibility = JavaVersion.VERSION_17
+    }
+
+    kotlinOptions {
+        jvmTarget = "17"
+    }
+
+    buildTypes {
+        release {
+            signingConfig = signingConfigs.debug
+        }
+    }
+}
+
+flutter {
+    source = "../.."
+}
+plugins {
+    id "com.android.application"
+    id "org.jetbrains.kotlin.android"
+    id "dev.flutter.flutter-gradle-plugin"
+}
+
+android {
     namespace = "com.waseem.medical_pro"
     compileSdk = flutter.compileSdkVersion
     ndkVersion = flutter.ndkVersion
